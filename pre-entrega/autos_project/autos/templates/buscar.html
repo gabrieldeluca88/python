@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Buscar</h2>
+<form method="get">
+    {{ form.as_p }}
+    <button type="submit">Buscar</button>
+</form>
+
+<h2>Resultados de la Búsqueda</h2>
+<ul>
+    {% for auto in results %}
+        <li>
+            {{ auto.cliente.nombre }} - {{ auto.modelo.nombre }} - {{ auto.año }} - {{ auto.color }}
+            (Cliente: {{ auto.cliente.nombre }}, País: {{ auto.cliente.pais_origen }})
+        </li>
+    {% empty %}
+        <li>No se encontraron resultados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
